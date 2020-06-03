@@ -1,3 +1,8 @@
+/**
+ * 
+ * Gui class uses the Layout, Widget, and Parser classes to generate a GUI
+ * 
+ */
 import javax.swing.JFrame;
 
 public class Gui {
@@ -13,12 +18,17 @@ public class Gui {
 			
 	
 	
-
+	/**
+	 * Gui object containing parsed information from input file
+	 * @param p
+	 */
 	public Gui(Parser p){
 		this.p = p;			
 	}
 	
-	
+	/**
+	 * Builds GUI window
+	 */
 	public void buildWindow(){
 		
 		Layout layout;
@@ -63,7 +73,9 @@ public class Gui {
 	
 	
 	
-	
+	/**
+	 * Determines GUI window width
+	 */
 	private void width(){
 				
 		Integer output;
@@ -78,7 +90,9 @@ public class Gui {
 	
 	
 	
-	
+	/**
+	 * Determines GUI window height
+	 */
 	private void height(){
 		
 		boolean stop = false;
@@ -116,7 +130,10 @@ public class Gui {
 	}
 	
 	
-	
+	/**
+	 * Creates Layout for GUI window
+	 * @return
+	 */
 	private Layout layout(){
 		
 		return new Layout(p);
@@ -125,7 +142,9 @@ public class Gui {
 
 	
 	
-	
+	/**
+	 * Displays GUI window name, width, and height in console
+	 */
 	@Override
 	public String toString(){
 		

@@ -1,4 +1,9 @@
-
+/*******************************************************************************
+ * 
+ * This class opens a file dialog box so that user may choose file for parsing.
+ * Parser and Gui classes parse the file and create a GUI of the output.
+ * 
+ *******************************************************************************/
 
 
 import java.io.File;
@@ -10,7 +15,7 @@ import javax.swing.JOptionPane;
 
 
 
-public class Test {
+public class Run {
 
 	public static void main(String[] args) {
 		

@@ -1,3 +1,10 @@
+/**
+ * 
+ * Widget class uses the Parser class to parse the file and generate a
+ * GUI of its contents. Widget class can be used to create a calculator.
+ * 
+ */
+
 
 import java.awt.Color;
 import java.awt.Component;
@@ -77,6 +84,11 @@ public class Widget {
 	}
 	
 	
+	/**
+	 * Creates Button with numbers or text. 
+	 * @param frame
+	 * @param panel
+	 */
 	private void button(JFrame frame, JPanel panel){
 		
 		String buttonName;
@@ -101,9 +113,6 @@ public class Widget {
 				button.setBackground(Color.white);
 			}
 			
-						
-			
-			
 			
 			if ( buttonName != null ){
 				if (frame == null ) { panel.add(button); }
@@ -113,7 +122,12 @@ public class Widget {
 	}
 	
 	
-	
+	/**
+	 * 
+	 * @param frame
+	 * @param panel
+	 * @param buttonText
+	 */
 	private void changeTextfield(JFrame frame, JPanel panel, String buttonText){
 		
 		// calculated result
@@ -203,7 +217,7 @@ public class Widget {
 						display = String.format("%d %s %d = %d", operandOne, operation, operandTwo, answer );
 						j.setText(display);
 						
-						// resst values for new calculation
+						// reset values for new calculation
 						this.resetCalculator();						
 					}
 					break;
@@ -232,7 +246,13 @@ public class Widget {
 	
 	
 
-	
+	/**
+	 * Performs calculations on two operands 
+	 * @param first
+	 * @param second
+	 * @param operator
+	 * @return
+	 */
 	private int calculate(int first, int second, String operator){
 				
 		if 		( operator.equals(ADD) 	    ){ return first + second; }		
@@ -243,7 +263,9 @@ public class Widget {
 		return 0;
 	}
 	
-	
+	/**
+	 * Erases operand values saved in calculator for calculation
+	 */
 	private void resetCalculator(){
 		
 		haveFirstOperand = false;
@@ -254,7 +276,7 @@ public class Widget {
 
 	
 	/**
-	 * Verifies string entered for button string to determine if calculator
+	 * Verifies string entered for button string is a digit to determine if calculator
 	 * functions can be used for that specific button
 	 * @param jb	JButton created in text file
 	 * @return		Boolean (true if button is for calculator)
@@ -277,20 +299,20 @@ public class Widget {
 		if ( !allowed ) {
 			switch (str)
 			{
-			case CLEAR:
-			case CLEAR_LOWERCASE:						
-			case ADD:
-			case SUBTRACT:
-			case MULTIPLY:
-			case TIMES:			
-			case DIVIDE:
-			case EQUAL:
-			{
-				allowed = true;
-				jb.setBackground(Color.LIGHT_GRAY);
-				jb.setForeground(Color.WHITE);
-				jb.setFont( new Font("Arial", Font.BOLD, 25));
-			}
+				case CLEAR:
+				case CLEAR_LOWERCASE:						
+				case ADD:
+				case SUBTRACT:
+				case MULTIPLY:
+				case TIMES:			
+				case DIVIDE:
+				case EQUAL:
+				{
+					allowed = true;
+					jb.setBackground(Color.LIGHT_GRAY);
+					jb.setForeground(Color.WHITE);
+					jb.setFont( new Font("Arial", Font.BOLD, 25));
+				}
 			}			
 		}
 		return allowed;
@@ -299,12 +321,14 @@ public class Widget {
 	
 	
 	
-	private void group(){
-		
-	}
+	private void group(){ }
 	
 
-	
+	/**
+	 * Creates JLabel
+	 * @param frame
+	 * @param panel
+	 */
 	private void label(JFrame frame, JPanel panel){
 		
 		String labelName;
@@ -322,6 +346,11 @@ public class Widget {
 	}	
 	
 	
+	/**
+	 * Creates JPanel, sets Layout type, and adds to JFrame
+	 * @param frame
+	 * @param panel
+	 */
 	private void panel(JFrame frame, JPanel panel){
 				
 		if (panel == null) { 
@@ -343,7 +372,11 @@ public class Widget {
 	
 
 	
-	
+	/**
+	 * Creates JTextField and adds to frame or panel
+	 * @param frame
+	 * @param panel
+	 */
 	private void textfield(JFrame frame, JPanel panel){
 		
 		Integer size;
@@ -363,11 +396,5 @@ public class Widget {
 				if (frame == null) { panel.add( textfield ); }
 			}
 		}		
-	}
-	
-	
-	
-
-
-			
+	}				
 }

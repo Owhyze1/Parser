@@ -1,3 +1,10 @@
+/**
+ * 
+ * Layout class determines the characters of the Flow and Grid Layouts used
+ * in the GUI generated from the parsed input file
+ * 
+ */
+
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.LayoutManager;
@@ -23,7 +30,10 @@ public class Layout {
 	private Integer gridVerticalGap;
 	
 	
-	
+	/**
+	 * Determines Layout type used for GUI
+	 * @param p
+	 */
 	protected Layout(Parser p){
 		
 		this.p = p;
@@ -36,7 +46,10 @@ public class Layout {
 		System.out.println(this);
 	}
 	
-	
+	/**
+	 * Sets up the Layout used for the GUI
+	 * @return Layout
+	 */
 	protected LayoutManager getLayoutType(){
 		
 		if 		( layoutType == FLOW ) { return new FlowLayout(); }
@@ -49,18 +62,34 @@ public class Layout {
 		return null;
 	}
 	
+	/**
+	 * Returns number of rows in Grid Layout
+	 * @return	
+	 */
 	public int getRows(){
 		return gridRows;
 	}
 	
+	/**
+	 * Returns number of columns in Grid Layout
+	 * @return
+	 */
 	public int getColumns(){
 		return gridColumns;
 	}
 	
+	/**
+	 * Returns horizontal gap in Grid Layout
+	 * @return
+	 */
 	public int getHGap(){
 		return gridHorizontalGap;
 	}
 	
+	/**
+	 * Returns vertical gap in Grid Layout
+	 * @return
+	 */
 	public int getVGap(){
 		return gridVerticalGap;
 	}
@@ -70,7 +99,10 @@ public class Layout {
 	
 	
 	
-	
+	/**
+	 * Determines type of Layout and displays error if it does not match one of the available Layouts
+	 * used in the grammar
+	 */
 	public void type(){
 			
 		
@@ -88,7 +120,9 @@ public class Layout {
 	
 	
 	
-	
+	/**
+	 * Verifies that colon appears as required by grammar
+	 */
 	private void confirmColon(){
 				
 		if ( p.lookahead() == Parser.COLON){
@@ -99,7 +133,9 @@ public class Layout {
 		}
 	}
 	
-	
+	/**
+	 * Determines size of grid rows in Grid Layout
+	 */
 	public void gridSizing(){
 		
 		Integer output;
@@ -172,7 +208,10 @@ public class Layout {
 		}
 	}
 	
-	
+	/**
+	 * Verifies that Grid Layout will contain horizontal or vertical gaps
+	 * @return	boolean (true if gaps present)
+	 */
 	private boolean hasGaps(){
 		if ( gridHorizontalGap != null && gridVerticalGap != null){
 			return true;
@@ -181,7 +220,9 @@ public class Layout {
 	}
 	
 	
-	
+	/**
+	 * Displays Layout information in console
+	 */
 	@Override
 	public String toString(){
 		

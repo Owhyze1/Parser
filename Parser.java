@@ -1,3 +1,12 @@
+/**
+ * 
+ * Parser class parsers input from text file as a scanner object and confirms that it matches
+ * the grammar and displays appropriate error messages, as necessary.
+ * 
+ * 
+ * 
+ */
+
 import java.util.Scanner;
 
 public class Parser {
@@ -28,8 +37,9 @@ public class Parser {
 	
 	private static final String END = "End";
 	/**
-	 * 
-	 * @param scan
+	 * Create Parser object that contains Parser status (PARSE, ERROR, COMPLETE) and current line
+	 * from input file
+	 * @param scan		input Scanner object to be parsed
 	 */
 	public Parser(Scanner scan){
 		this.scan = scan;
@@ -37,16 +47,26 @@ public class Parser {
 		line = "";
 	}
 	
-	
+	/**
+	 * Get current character being parsed
+	 * @return
+	 */
 	public char getCharacter(){
 		return character;
 	}
 	
 	
+	/**
+	 * Determine if Parser is currently parsing, has an error, or is complete
+	 * @return		parser state(PARSE, ERROR, COMPLETE)
+	 */
 	public state getStatus(){
 		return status;
 	}
 	
+	/**
+	 * Complete parsing by changing Parser status to COMPLETE and setting current line and character to NULL
+	 */
 	protected void completeParse(){
 		status = state.COMPLETE;
 		line = null;
@@ -131,7 +151,14 @@ public class Parser {
 	
 	
 	
-	
+	/**
+	 * Ensure that the token stream begins and ends with the correct punctuation. 
+	 * for parsing non-digit characters
+	 * 
+	 * @param begin		
+	 * @param ending
+	 * @return
+	 */
 	protected String collectString(char begin, char ending){
 
 		String output = "";
@@ -140,8 +167,6 @@ public class Parser {
 		boolean stop = false;
 
 
-		// Ensure that the token stream begins with the correct punctuation. 
-		// Collect each character until the ending punctuation is reached. 
 		if ( character == begin ){
 
 			while ( !stop && status == Parser.state.PARSE)
@@ -168,7 +193,15 @@ public class Parser {
 	
 	
 	
-	
+	/**
+	 * Ensure that the token stream begins and ends with the correct punctuation
+	 * for parsing numbers. 
+	 * 
+	 * @param begin
+	 * @param ending
+	 * @param buttonException
+	 * @return
+	 */
 	protected Integer collectNumber(char begin, char ending, boolean buttonException){
 
 		String output = "";
@@ -176,9 +209,7 @@ public class Parser {
 		char collector;
 		boolean stop = false;
 
-
-		// Ensure that the token stream begins with the correct punctuation. 
-		// Collect each character until the ending punctuation is reached. 
+		
 		if ( character == begin ){
 
 			while ( !stop && status == Parser.state.PARSE)
@@ -208,10 +239,13 @@ public class Parser {
 		}
 
 		return Integer.parseInt(output);
-
 	}
 	
-	
+	/**
+	 * Confirms presence of "End" keyword and checks the next character after the End keyword
+	 * to determine
+	 * @return
+	 */
 	public Boolean end()
 	{
 		if ( this.keywordMatch(END) ){ 
@@ -222,6 +256,10 @@ public class Parser {
 	}
 	
 	
+	/**
+	 * Verifies if character is a semicolon(";") as required and displays error message if not
+	 * @return
+	 */
 	public boolean confirmSemicolon(){
 		
 		if ( character == Parser.SEMICOLON){
@@ -233,7 +271,10 @@ public class Parser {
 		return false;
 	}
 	
-	
+	/**
+	 * Displays end of parsing once period(".") character is confirmed
+	 * @return		boolean (true if stopping)
+	 */
 	public boolean confirmPeriod(){
 		
 		if ( character == Parser.PERIOD){
@@ -245,6 +286,10 @@ public class Parser {
 		return false;
 	}
 
+	/**
+	 * Skips required whitespace character and displays error message when not present 
+	 * as required by grammar
+	 */
 	protected void skipWhiteSpace(){
 
 		if ( character == SPACE){
@@ -255,7 +300,10 @@ public class Parser {
 		}
 	}
 	
-	
+	/**
+	 * Displays error message
+	 * @param error		error message to display
+	 */
 	protected void errorMessage(String error){
 		System.out.println(error);
 		this.status = state.ERROR;
