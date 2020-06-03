@@ -1,4 +1,4 @@
-## GUI generates a calculator based on input from a text file, a parser, and a grammar. The Parser is based on the following grammar. The provided test file will create a functioning calculator.
+** ** GUI generates a calculator based on input from a text file, a parser, and a grammar. The Parser is based on the following grammar. The provided test file will create a functioning calculator.
 
 ![image](https://user-images.githubusercontent.com/16492566/83687997-a7723000-a5ba-11ea-8196-9825a59b1f44.png)
 
